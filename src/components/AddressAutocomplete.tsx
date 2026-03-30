@@ -22,7 +22,8 @@ interface AddressAutocompleteProps {
 
 declare global {
   interface Window {
-    google: typeof google;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    google: any;
     initGooglePlaces: () => void;
   }
 }
@@ -36,7 +37,8 @@ export default function AddressAutocomplete({
   dark = false,
 }: AddressAutocompleteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const autocompleteRef = useRef<any>(null);
   const [zoneResult, setZoneResult] = useState<(ZoneResult & { pricing: unknown }) | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
